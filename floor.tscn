@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://bom8hn2ppvbhg"]
+
+[ext_resource type="Script" path="res://floor.gd" id="1_kkeid"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ffyk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eeadv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oyj70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8loq"]
+size = Vector2(1932, 20)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wr8jm"]
+
+[sub_resource type="Theme" id="Theme_p7vqt"]
+
+[sub_resource type="Gradient" id="Gradient_bmvsf"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5k047"]
+gradient = SubResource("Gradient_bmvsf")
+
+[node name="Floor" type="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_7ffyk")
+position = Vector2(0, 1080)
+physics_material_override = SubResource("PhysicsMaterial_eeadv")
+script = ExtResource("1_kkeid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_oyj70")
+position = Vector2(956, 0)
+shape = SubResource("RectangleShape2D_l8loq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_wr8jm")
+offset_top = -7.0
+offset_right = 1922.0
+offset_bottom = 15.0
+theme = SubResource("Theme_p7vqt")
+texture = SubResource("GradientTexture1D_5k047")
