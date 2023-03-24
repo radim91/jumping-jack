@@ -26,6 +26,10 @@ script = ExtResource("1_43x8f")
 
 [node name="Player" parent="." instance=ExtResource("2_ccdvt")]
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+position = Vector2(0, -300)
+remote_path = NodePath("../../Camera2D")
+
 [node name="platform" type="StaticBody2D" parent="."]
 position = Vector2(1028, 922)
 
@@ -40,3 +44,8 @@ offset_top = -25.0
 offset_right = 350.0
 offset_bottom = 15.0
 texture = SubResource("GradientTexture1D_2ahs0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(913, 380)
+limit_left = 0
+limit_right = 1920
