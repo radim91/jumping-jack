@@ -101,3 +101,5 @@ animation = &"readyjump"
 autoplay = "run"
 
 [node name="JumpTimer" type="Timer" parent="."]
+
+[connection signal="hit" from="." to="." method="_on_hit"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bina58058keq6"]
+
+[ext_resource type="Texture2D" uid="uid://bj1bw5776duuy" path="res://assets/superjump.png" id="1_r2qer"]
+[ext_resource type="Script" path="res://superjump.gd" id="1_wdip0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uspnm"]
+atlas = ExtResource("1_r2qer")
+region = Rect2(0, 0, 193, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owlsv"]
+atlas = ExtResource("1_r2qer")
+region = Rect2(193, 0, 193, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyo07"]
+atlas = ExtResource("1_r2qer")
+region = Rect2(386, 0, 193, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaku4"]
+atlas = ExtResource("1_r2qer")
+region = Rect2(579, 0, 193, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om0jf"]
+atlas = ExtResource("1_r2qer")
+region = Rect2(772, 0, 193, 171)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6wj1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uspnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owlsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyo07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaku4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om0jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owlsv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4pvj"]
+radius = 81.0555
+
+[node name="SuperJump" type="Area2D"]
+script = ExtResource("1_wdip0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x6wj1")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0375924
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -2)
+shape = SubResource("CircleShape2D_a4pvj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

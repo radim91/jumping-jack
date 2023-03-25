@@ -1,4 +1,7 @@
 extends CharacterBody2D
+class_name Player
+
+signal hit
 
 const SPEED = 300.0
 var jump_velocity = -200.0
@@ -77,3 +80,9 @@ func _physics_process(delta):
 	
 	position.x = clamp(position.x, 90, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+
+func set_super_jump():
+	has_super_jump = true
+
+func _on_super_jump_body_entered(body):
+	set_super_jump()
