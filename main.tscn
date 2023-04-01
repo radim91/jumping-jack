@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://1s4dcwj2uofu"]
+[gd_scene load_steps=10 format=3 uid="uid://1s4dcwj2uofu"]
 
 [ext_resource type="Texture2D" uid="uid://i5fqve2eynrm" path="res://assets/Terrain (16x16).png" id="1_5upvp"]
 [ext_resource type="PackedScene" uid="uid://q2ct8o401700" path="res://player.tscn" id="2_ccdvt"]
 [ext_resource type="FontFile" uid="uid://c3uaxratsbc6w" path="res://assets/Iosevka Nerd Font Complete.ttf" id="3_cpr0d"]
 [ext_resource type="PackedScene" uid="uid://bina58058keq6" path="res://superjump.tscn" id="4_67hxb"]
+[ext_resource type="PackedScene" uid="uid://3ps5yqvspq0e" path="res://spikes.tscn" id="5_bvfiy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blafl"]
 texture = ExtResource("1_5upvp")
@@ -521,5 +522,15 @@ limit_right = 1920
 [node name="SuperJump" parent="." instance=ExtResource("4_67hxb")]
 position = Vector2(1618, 535)
 scale = Vector2(0.4, 0.4)
+
+[node name="spikes" parent="." instance=ExtResource("5_bvfiy")]
+position = Vector2(874, 351)
+rotation = -1.5708
+scale = Vector2(3.2, 3.2)
+
+[node name="spikes2" parent="." instance=ExtResource("5_bvfiy")]
+position = Vector2(1398, 354)
+rotation = 1.5708
+scale = Vector2(3.2, 3.2)
 
 [connection signal="body_entered" from="SuperJump" to="Player" method="_on_super_jump_body_entered"]

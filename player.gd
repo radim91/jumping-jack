@@ -22,7 +22,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-		print(velocity.y)
+#		print(velocity.y)
 		
 		if (velocity.y > 3000):
 #			TODO: game over
