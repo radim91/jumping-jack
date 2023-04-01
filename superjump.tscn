@@ -53,6 +53,7 @@ animations = [{
 radius = 81.0555
 
 [node name="SuperJump" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_wdip0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,7 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://smq78vjnqd7k"]
+[gd_scene load_steps=18 format=3 uid="uid://smq78vjnqd7k"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_ouklb"]
 [ext_resource type="Texture2D" uid="uid://c5r0gm2kyht0c" path="res://assets/enemy.png" id="1_u1bns"]
+[ext_resource type="PackedScene" uid="uid://bch3hgc0o1pwp" path="res://hitbox.tscn" id="3_74gq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x73s"]
+atlas = ExtResource("1_u1bns")
+region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wy8b"]
 atlas = ExtResource("1_u1bns")
@@ -43,10 +48,6 @@ region = Rect2(256, 0, 32, 32)
 atlas = ExtResource("1_u1bns")
 region = Rect2(288, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x73s"]
-atlas = ExtResource("1_u1bns")
-region = Rect2(320, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcdst"]
 atlas = ExtResource("1_u1bns")
 region = Rect2(352, 0, 32, 32)
@@ -54,6 +55,9 @@ region = Rect2(352, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_b5a5c"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x73s")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6wy8b")
 }, {
@@ -85,9 +89,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_a625c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4x73s")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_gcdst")
 }],
 "loop": true,
@@ -100,14 +101,29 @@ radius = 9.0
 height = 26.0
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_ouklb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -3)
 sprite_frames = SubResource("SpriteFrames_b5a5c")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.0821841
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 2)
+[node name="EdgeCheck" type="RayCast2D" parent="."]
+position = Vector2(9, 12)
+target_position = Vector2(0, 2)
+
+[node name="EdgeCheck2" type="RayCast2D" parent="."]
+position = Vector2(-6, 12)
+target_position = Vector2(0, 2)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource("CapsuleShape2D_7qymk")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_74gq6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2, -1)
 shape = SubResource("CapsuleShape2D_7qymk")

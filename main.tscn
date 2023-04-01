@@ -512,13 +512,15 @@ horizontal_alignment = 1
 [node name="Player" parent="." instance=ExtResource("2_ccdvt")]
 z_index = 100
 position = Vector2(175, 923)
+scale = Vector2(0.75, 0.75)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 position = Vector2(0, -300)
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(175, 623)
+position = Vector2(175, 698)
+scale = Vector2(0.75, 0.75)
 limit_left = 0
 limit_right = 1920
 
@@ -537,7 +539,7 @@ rotation = 1.5708
 scale = Vector2(3.2, 3.2)
 
 [node name="Enemy" parent="." instance=ExtResource("7_shkgf")]
-position = Vector2(920, 286)
+position = Vector2(1117, 849)
 scale = Vector2(3, 3)
 
 [connection signal="body_entered" from="SuperJump" to="Player" method="_on_super_jump_body_entered"]

@@ -51,8 +51,8 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept") and is_on_floor():
 		$JumpTimer.stop()
 		
-		if jump_time_length > 6:
-			jump_time_length = 6
+		if jump_time_length > 4:
+			jump_time_length = 5
 			
 		if has_super_jump:
 			jump_time_length = 10
