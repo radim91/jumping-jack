@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://1s4dcwj2uofu"]
+[gd_scene load_steps=12 format=3 uid="uid://1s4dcwj2uofu"]
 
 [ext_resource type="Texture2D" uid="uid://i5fqve2eynrm" path="res://assets/Terrain (16x16).png" id="1_5upvp"]
+[ext_resource type="Script" path="res://main.gd" id="1_ivl04"]
 [ext_resource type="PackedScene" uid="uid://q2ct8o401700" path="res://player.tscn" id="2_ccdvt"]
 [ext_resource type="FontFile" uid="uid://c3uaxratsbc6w" path="res://assets/Iosevka Nerd Font Complete.ttf" id="3_cpr0d"]
 [ext_resource type="PackedScene" uid="uid://bina58058keq6" path="res://superjump.tscn" id="4_67hxb"]
 [ext_resource type="PackedScene" uid="uid://3ps5yqvspq0e" path="res://spikes.tscn" id="5_bvfiy"]
+[ext_resource type="PackedScene" uid="uid://smq78vjnqd7k" path="res://enemy.tscn" id="7_shkgf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blafl"]
 texture = ExtResource("1_5upvp")
@@ -481,6 +483,7 @@ sources/0 = SubResource("TileSetAtlasSource_blafl")
 
 [node name="Main" type="Node2D"]
 position = Vector2(0, -1402)
+script = ExtResource("1_ivl04")
 
 [node name="Terrain" type="TileMap" parent="."]
 position = Vector2(0, 1080)
@@ -532,5 +535,9 @@ scale = Vector2(3.2, 3.2)
 position = Vector2(1398, 354)
 rotation = 1.5708
 scale = Vector2(3.2, 3.2)
+
+[node name="Enemy" parent="." instance=ExtResource("7_shkgf")]
+position = Vector2(920, 286)
+scale = Vector2(3, 3)
 
 [connection signal="body_entered" from="SuperJump" to="Player" method="_on_super_jump_body_entered"]
