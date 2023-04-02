@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1s4dcwj2uofu"]
+[gd_scene load_steps=13 format=3 uid="uid://1s4dcwj2uofu"]
 
 [ext_resource type="Texture2D" uid="uid://i5fqve2eynrm" path="res://assets/Terrain (16x16).png" id="1_5upvp"]
 [ext_resource type="Script" path="res://main.gd" id="1_ivl04"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bina58058keq6" path="res://superjump.tscn" id="4_67hxb"]
 [ext_resource type="PackedScene" uid="uid://3ps5yqvspq0e" path="res://spikes.tscn" id="5_bvfiy"]
 [ext_resource type="PackedScene" uid="uid://smq78vjnqd7k" path="res://enemy.tscn" id="7_shkgf"]
+[ext_resource type="PackedScene" uid="uid://dg11orbot6qsj" path="res://enemy_box.tscn" id="8_7kc2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blafl"]
 texture = ExtResource("1_5upvp")
@@ -541,5 +542,9 @@ scale = Vector2(3.2, 3.2)
 [node name="Enemy" parent="." instance=ExtResource("7_shkgf")]
 position = Vector2(1117, 849)
 scale = Vector2(3, 3)
+
+[node name="EnemyBox" parent="." instance=ExtResource("8_7kc2v")]
+position = Vector2(710, 824)
+scale = Vector2(1.6, 1.6)
 
 [connection signal="body_entered" from="SuperJump" to="Player" method="_on_super_jump_body_entered"]

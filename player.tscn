@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://q2ct8o401700"]
+[gd_scene load_steps=15 format=3 uid="uid://q2ct8o401700"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_v2q45"]
+[ext_resource type="Script" path="res://playermovement.gd" id="2_41xr2"]
 [ext_resource type="Texture2D" uid="uid://bjyisamcgbs63" path="res://assets/jumping.png" id="3_ihevx"]
 [ext_resource type="Texture2D" uid="uid://bp8d4wyiixv2d" path="res://assets/landing.png" id="4_2xrem"]
 [ext_resource type="Texture2D" uid="uid://hiwjmx7rcdym" path="res://assets/sprites.png" id="6_x65xp"]
+
+[sub_resource type="Resource" id="Resource_f0cbu"]
+script = ExtResource("2_41xr2")
+jump_velocity = -200.0
+jump_time_length = 3
+has_super_jump = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0231j"]
 size = Vector2(92.0092, 123.142)
@@ -88,6 +95,7 @@ animations = [{
 position = Vector2(913, 680)
 collision_layer = 2
 script = ExtResource("1_v2q45")
+moveData = SubResource("Resource_f0cbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-35, 14)

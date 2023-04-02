@@ -4,10 +4,9 @@ class_name Player
 signal hit
 
 const SPEED = 300.0
-var jump_velocity = -200.0
-var jump_time_length = 3
 var screen_size
-var has_super_jump = false
+
+@export var moveData: PlayerMovement
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -42,24 +41,24 @@ func _physics_process(delta):
 		$JumpTimer.start()
 		
 		if Input.is_action_pressed("shift"):
-			jump_time_length = 3.5
+			moveData.jump_time_length = 3.5
 		
 		animated_sprite.animation = "readyjump"
-		jump_time_length += delta
+		moveData.jump_time_length += delta
 			
 		
 	if Input.is_action_just_released("ui_accept") and is_on_floor():
 		$JumpTimer.stop()
 		
-		if jump_time_length > 4:
-			jump_time_length = 5
+		if moveData.jump_time_length > 4:
+			moveData.jump_time_length = 5
 			
-		if has_super_jump:
-			jump_time_length = 10
-			has_super_jump = false
+		if moveData.has_super_jump:
+			moveData.jump_time_length = 10
+			moveData.has_super_jump = false
 			
-		velocity.y = jump_velocity * jump_time_length
-		jump_time_length = 3
+		velocity.y = moveData.jump_velocity * moveData.jump_time_length
+		moveData.jump_time_length = 3
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -81,7 +80,7 @@ func _physics_process(delta):
 	position.x = clamp(position.x, 90, screen_size.x)
 
 func set_super_jump():
-	has_super_jump = true
+	moveData.has_super_jump = true
 
 func _on_super_jump_body_entered(body):
 	set_super_jump()
