@@ -7,6 +7,7 @@ const SPEED = 300.0
 var screen_size
 
 @export var moveData: PlayerMovement
+const jump_time_default = 3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -16,12 +17,11 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 func _physics_process(delta):
+	
 	var direction = Input.get_axis("ui_left", "ui_right")		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
-#		print(velocity.y)
 		
 		if (velocity.y > 3000):
 #			TODO: game over
@@ -38,21 +38,17 @@ func _physics_process(delta):
 			animated_sprite.animation = "run"
 
 	if Input.is_action_pressed("ui_accept") and is_on_floor():
-		$JumpTimer.start()
-		
 		if Input.is_action_pressed("shift"):
-			moveData.jump_time_length = 3.5
-		
-		animated_sprite.animation = "readyjump"
-		moveData.jump_time_length += delta
+			moveData.jump_time_length = 3.7
 			
+		animated_sprite.animation = "readyjump"
+		
+		moveData.jump_time_length += delta
 		
 	if Input.is_action_just_released("ui_accept") and is_on_floor():
-		$JumpTimer.stop()
-		
-		if moveData.jump_time_length > 4:
+		if (moveData.jump_time_length - jump_time_default) > 0.65:
 			moveData.jump_time_length = 5
-			
+		
 		if moveData.has_super_jump:
 			moveData.jump_time_length = 10
 			moveData.has_super_jump = false

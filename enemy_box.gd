@@ -1,10 +1,7 @@
-extends CharacterBody2D
+extends Node2D
+
+var angle = 0
 
 func _physics_process(delta):
-	var new_pos = Vector2()
-
-	new_pos.x = cos(1) * delta
-	new_pos.y = sin(1) * delta
-	position = global_position + new_pos
-	
-	print(position)
+	angle += delta 
+	$SpikeBox.global_position = $Point.global_position + Vector2.RIGHT.rotated(angle)*200

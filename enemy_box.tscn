@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bh2ajojrmds78" path="res://assets/enemybox.png" id="1_d3skc"]
 [ext_resource type="PackedScene" uid="uid://bch3hgc0o1pwp" path="res://hitbox.tscn" id="2_rpvnw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1h8a"]
+size = Vector2(32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5c4q"]
 atlas = ExtResource("1_d3skc")
 region = Rect2(0, 0, 54, 52)
@@ -40,23 +43,23 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1h8a"]
-size = Vector2(32, 32)
-
-[node name="EnemyBox" type="CharacterBody2D"]
-collision_layer = 2
+[node name="EnemyBox" type="Node2D"]
 script = ExtResource("1_4xukg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Point" type="Node2D" parent="."]
+
+[node name="SpikeBox" type="Area2D" parent="."]
+
+[node name="Hitbox" parent="SpikeBox" instance=ExtResource("2_rpvnw")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeBox/Hitbox"]
+shape = SubResource("RectangleShape2D_h1h8a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpikeBox"]
 sprite_frames = SubResource("SpriteFrames_0alii")
 animation = &"cycling"
 autoplay = "cycling"
 frame_progress = 0.754755
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h1h8a")
-
-[node name="Hitbox" parent="." instance=ExtResource("2_rpvnw")]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeBox"]
 shape = SubResource("RectangleShape2D_h1h8a")
