@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=3 uid="uid://jagmjv1k51uh"]
+
+[ext_resource type="Texture2D" uid="uid://csm4jpcrbd3wi" path="res://assets/bulletenemy.png" id="1_0uh2j"]
+[ext_resource type="PackedScene" uid="uid://bch3hgc0o1pwp" path="res://hitbox.tscn" id="3_4m286"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpgrj"]
+radius = 17.0294
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrnqv"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2ig5"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lfhc"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftkk8"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkwd0"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7qxo"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki3mf"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3l6o"]
+atlas = ExtResource("1_0uh2j")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34yko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrnqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2ig5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lfhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftkk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkwd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7qxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki3mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3l6o")
+}],
+"loop": true,
+"name": &"running",
+"speed": 8.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_0i4hh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -11, -15, 0, 0, 0, 0, -17, -4, 0, 0, 0, 0, -17, 10, 0, 0, 0, 0, -10, 14, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 6, 15, 0, 0, 0, 0, 15, 7, 0, 0, 0, 0, 16, 2, 0, 0, 0, 0, 14, -9, 0, 0, 0, 0, 8, -14, 0, 0, 0, 0, 2, -17, 0, 0, 0, 0, -3, -18, 0, 0, 0, 0, -11, -15)
+}
+point_count = 13
+
+[node name="BulletEnemy" type="Area2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dpgrj")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_34yko")
+animation = &"running"
+autoplay = "running"
+frame_progress = 0.892384
+
+[node name="Hitbox" parent="." instance=ExtResource("3_4m286")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_dpgrj")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0i4hh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-11, -15)
+rotation = 2.07014

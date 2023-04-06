@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctvwwymm3lxoj"
-path="res://.godot/imported/Idle (18x18).png-b04d066935c6ca93bca60b099434a753.ctex"
+uid="uid://csm4jpcrbd3wi"
+path="res://.godot/imported/bulletenemy.png-0045d45293909b17775e92fab8940cca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pixel Adventure 1/Free/Traps/Arrow/Idle (18x18).png"
-dest_files=["res://.godot/imported/Idle (18x18).png-b04d066935c6ca93bca60b099434a753.ctex"]
+source_file="res://assets/bulletenemy.png"
+dest_files=["res://.godot/imported/bulletenemy.png-0045d45293909b17775e92fab8940cca.ctex"]
 
 [params]
 
